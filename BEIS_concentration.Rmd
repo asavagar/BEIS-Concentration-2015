@@ -1,16 +1,16 @@
 ---
 title: "BEIS Concentration Data Analysis"
 output:
-  html_notebook: default
+  pdf_document: default
   html_document:
     df_print: paged
-  pdf_document: default
+  html_notebook: default
 editor_options:
   chunk_output_type: console
 ---
 * Kyung In Hwang and Anthony Savagar
 * Data source: Department for Business, Energy and Industrial Strategy (BEIS)
-  (https://www.gov.uk/government/statistics/business-sectors-indicators-of-concentration-and-churn)
+(https://www.gov.uk/government/statistics/business-sectors-indicators-of-concentration-and-churn)
 
 ```{r Preamble, message=FALSE, warning=FALSE}
 # Clear the workspace
@@ -69,10 +69,9 @@ dt %>%
 We plot time trends in the Herfindahl-Hirschman index by 1-digit sectors. While BEIS data provides information of 44 2-digit SIC sectors, the figures below are drawn by (mean) Herfindahl index calculated at the 1-digit SIC sector level.
 
 The first panel documents that, although level of market concentrations differ across sectors, many of sectors have similar time trends with the overall trend -- a hump-shape. 
-
-The second panel ranks sectors by Hirfindahl-Hirschman index. The ranked sectoral comparison shows the average HHI for 1-digit sectors. Manufacturing and wholesale/retail sectors mark fourth and fifth largest indices, respectively.
-
-```{r Sector HHI Time Series Comparison}
+<!-- It is important to set the fig.height and width for this chunk. The rstudio preview pane will differ from
+the final output -->
+```{r Sector HHI Time Series Comparison, fig.height=10, fig.width=10}
 dt %>%
   filter(sic1name != "NA") %>%
   group_by(sic1name, year) %>%
@@ -82,12 +81,13 @@ dt %>%
     mapping = aes(x = year, y = sic1hhi), linetype = "twodash",
     size = 1.2, color = "red"
   ) +
-  facet_wrap(~sic1name) +
-  scale_x_discrete(name = "year", limits = c(2006, 2009, 2012, 2015)) +
+  facet_wrap(~sic1name, ncol=4, labeller = labeller(sic1name = label_wrap_gen(width = 30))) +
+  scale_x_discrete(name = "Year", limits = c(2006, 2009, 2012, 2015)) +
   scale_y_continuous(name = "Herfindahl Index")
+
+ggsave("HHI_by_sector.png", width = 25, height = 25, units = "cm")
 ```
-
-
+The second panel ranks sectors by Hirfindahl-Hirschman index. The ranked sectoral comparison shows the average HHI for 1-digit sectors. Manufacturing and wholesale/retail sectors mark fourth and fifth largest indices, respectively.
 ```{r Sector HHI Full Period Average}
 dt %>%
   filter(sic1name != "NA") %>%
@@ -96,11 +96,10 @@ dt %>%
   arrange(sic1hhi) %>%
   mutate(sic1name = factor(sic1name, sic1name)) %>%
   ggplot(aes(x = sic1name, y = sic1hhi)) +
-  geom_segment(aes(
-    x = sic1name, xend = sic1name, y = 0, yend = sic1hhi,
-    size = I(10)
-  ), color = "skyblue", size = 2) +
+  geom_segment(aes(x = sic1name, xend = sic1name, y = 0, yend = sic1hhi,
+    size = I(10)), color = "skyblue", size = 2) +
   geom_point(color = "blue", size = 4, alpha = 0.6) +
+  scale_x_discrete(labels = function(sic1name) str_wrap(sic1name, width = 37)) +
   theme_light() +
   coord_flip() +
   theme(
