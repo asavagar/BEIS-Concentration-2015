@@ -250,5 +250,3 @@ dt %>%
   geom_point(aes(x = netentryratio, y = hhi, color = sic1), size = 3) +
   geom_smooth(aes(x = netentryratio, y = hhi), method = "lm", se = FALSE)
 ```
-
-
