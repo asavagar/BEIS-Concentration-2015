@@ -1667,7 +1667,7 @@ plot(HHI_plot)</code></pre>
 </div>
 <div id="distributions-of-the-herfindahl-hirschman-index" class="section level2">
 <h2>Distributions of the Herfindahl-Hirschman Index</h2>
-<p>To get an idea of the evolution of the entire distribution of HHI, we draw histograms across three years. They are right-skewed distributions implying most sectors have low concentration. The middle part and the upper tail become thick during the period of 2006 to 2010 indicating a higher concentration in more sectors. By 2015 the shape of the distribution reverts towards 2006, but with a thicker middle representing more sectors with moderate concentration. These findings indicate that the increase in average HHI is not driven by a few sectors. Rather, most sectors have experienced a rise in market concentration from 2006 to 2010.</p>
+<p>To understand the evolution of the entire distribution of HHI, we draw histograms across three years. They are right-skewed distributions implying most sectors have low concentration. The middle part and the upper tail become thick during the period of 2006 to 2010 indicating a higher concentration in more sectors. By 2015 the shape of the distribution reverts towards 2006, but with a thicker middle representing more sectors with moderate concentration. These findings indicate that the increase in average HHI is not driven by a few sectors. Rather, most sectors have experienced a rise in market concentration from 2006 to 2010.</p>
 <pre class="r"><code>dt %&gt;%
   filter(year == 2006 | year == 2010 | year == 2015) %&gt;%
   ggplot() +
@@ -1744,7 +1744,7 @@ the final output -->
 </div>
 <div id="a-closer-look-at-three-1-digit-sic-sectors" class="section level2">
 <h2>A closer look at three 1-digit SIC sectors</h2>
-<p>We focus on manufacturing, retail/wholesale and agricultural sectors with relatively higher turnovers in the UK. The figure below reveals that manufacturing, retail/wholesale and agricultural sectors have similar time trends with the overall trend:</p>
+<p>The figure below reveals that manufacturing, retail/wholesale and agricultural sectors have similar time trends with the overall trend:</p>
 <ol style="list-style-type: decimal">
 <li><p>Their Herfindahl indices start to rise, peak in 2010 (or 2011), and decrease up to 2015.</p></li>
 <li><p>In spite of decline after 2010 (or 2011), they have not returned to the pre-recession level.</p></li>
@@ -1820,7 +1820,7 @@ the final output -->
 <div id="herfindahl-hirschman-index-vs.-net-entry-rate" class="section level2">
 <h2>Herfindahl-Hirschman index vs. Net Entry Rate</h2>
 <p>A naive hypothesis might be that sectors with high net entry have low concentration and sectors with low net entry (or exit) have high concentration.</p>
-<p>To get an idea on the relationship across sectors between the Herfindahl index and net entry rate, we draw a scatter plot between the two variables using the pooled cross-section data.</p>
+<p>To study the relationship across sectors between the Herfindahl index and net entry rate, we draw a scatter plot between the two variables using the pooled cross-section data.</p>
 <p>The first figure includes the full sample and shows a weak positive association.</p>
 <pre class="r"><code>dt %&gt;%
   mutate(netentryratio = ((entrynbr - exitnbr) / firmnbr) * 100) %&gt;%
