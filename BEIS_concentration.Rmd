@@ -43,7 +43,7 @@ plot(HHI_plot)
 
 ## Distributions of the Herfindahl-Hirschman Index
 
-To get an idea of the evolution of the entire distribution of HHI, we draw histograms across three years. They are right-skewed distributions implying most sectors have low concentration. The middle part and the upper tail become thick during the period of 2006 to 2010 indicating a higher concentration in more sectors. By 2015 the shape of the distribution reverts towards 2006, but with a thicker middle representing more sectors with moderate concentration. These findings indicate that the increase in average HHI is not driven by a few sectors. Rather, most sectors have experienced a rise in market concentration from 2006 to 2010.    
+To understand the evolution of the entire distribution of HHI, we draw histograms across three years. They are right-skewed distributions implying most sectors have low concentration. The middle part and the upper tail become thick during the period of 2006 to 2010 indicating a higher concentration in more sectors. By 2015 the shape of the distribution reverts towards 2006, but with a thicker middle representing more sectors with moderate concentration. These findings indicate that the increase in average HHI is not driven by a few sectors. Rather, most sectors have experienced a rise in market concentration from 2006 to 2010.    
 
 ```{r HHI Distributions}
 dt %>%
@@ -128,7 +128,7 @@ dt %>%
 
 ## A closer look at three 1-digit SIC sectors
 
-We focus on manufacturing, retail/wholesale and agricultural sectors with relatively higher turnovers in the UK. The figure below reveals that manufacturing, retail/wholesale and agricultural sectors have similar time trends with the overall trend: 
+The figure below reveals that manufacturing, retail/wholesale and agricultural sectors have similar time trends with the overall trend: 
 
 1. Their Herfindahl indices start to rise,  peak in 2010 (or 2011), and decrease up to 2015. 
 
@@ -217,7 +217,7 @@ dt %>%
 
 A naive hypothesis might be that sectors with high net entry have low concentration and sectors with low net entry (or exit) have high concentration.
 
-To get an idea on the relationship across sectors between the Herfindahl index and net entry rate, we draw a scatter plot between the two variables using the pooled cross-section data. 
+To study the relationship across sectors between the Herfindahl index and net entry rate, we draw a scatter plot between the two variables using the pooled cross-section data. 
 
 The first figure includes the full sample and shows a weak positive association.      
 
